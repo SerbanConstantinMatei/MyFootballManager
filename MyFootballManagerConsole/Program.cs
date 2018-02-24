@@ -13,7 +13,7 @@ namespace MyFootballManagerConsole
         {
             var mm = new MatchListFromMemory();
             mm.LoadData();
-            Console.WriteLine($"nr matche{mm.Count}");
+            Console.WriteLine($"nr matches{mm.Count}");
             for (int i = 0; i < mm.Count; i++)
             {
                 Console.WriteLine(" ");
