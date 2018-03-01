@@ -9,10 +9,9 @@ namespace MyFootballMangerDAL
 {
     public class MatchListFromMemory:MatchList
     {
-
+        public List<Team> teams = new List<Team>();
         public void LoadData()
         {
-            var teams = new List<Team>();
             for (int i = 0; i < 3; i++)
             {
                 Team t = new Team();
@@ -32,12 +31,62 @@ namespace MyFootballMangerDAL
                     m.Date = new DateTime(2017, i + 1, j + 1);
                     m.HomeTeam = teams[i];
                     m.AwayTeam = teams[j];
+
                     m.Result = new Score();
                     m.Result.HomeScore = new Random(i).Next(6);
                     m.Result.AwayScore = new Random(j).Next(5);
+                    m.HomeTeam.GoalsScored += m.Result.HomeScore;
+                    m.AwayTeam.GoalsScored += m.Result.AwayScore;
+
+                    if (m.Result.HomeScore > m.Result.AwayScore)
+                    {
+                        m.HomeTeam.ChampionshipPoints += 3;
+                    }
+                    else if (m.Result.HomeScore < m.Result.AwayScore)
+                    {
+                        m.AwayTeam.ChampionshipPoints += 3;
+                    }
+                    else
+                    {
+                        m.AwayTeam.ChampionshipPoints++;
+                        m.HomeTeam.ChampionshipPoints++;
+                    }
                     this.Add(m);
                 }
             }
+        }
+
+        public void SortByPoints()
+        {
+            /* Basic Bubble Sort */
+            int l = teams.Count;
+            bool sorted;
+
+            do
+            {
+                sorted = true;
+                for (int i = 0; i < l - 1; i++)
+                {
+                    if (teams[i].ChampionshipPoints < teams[i + 1].ChampionshipPoints)
+                    {
+                        Team aux = teams[i];
+                        teams[i] = teams[i + 1];
+                        teams[i + 1] = aux;
+                        sorted = false;
+                    }
+
+                    else if (teams[i].ChampionshipPoints == teams[i + 1].ChampionshipPoints)
+                    {
+                        if (teams[i].GoalsScored < teams[i + 1].GoalsScored)
+                        {
+                            Team aux = teams[i];
+                            teams[i] = teams[i + 1];
+                            teams[i + 1] = aux;
+                            sorted = false;
+                        }
+                    }
+                }
+            } while (!sorted);
         }
     }
 }
