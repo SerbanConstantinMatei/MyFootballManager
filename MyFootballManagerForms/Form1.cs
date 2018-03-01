@@ -15,7 +15,9 @@ namespace MyFootballManagerForms
     {
         public int Id { get; set; }
         public string HomeTeamDisplay { get; set; }
-
+        public string AwayTeamDisplay { get; set; }
+        public int HomeScoreDisplay { get; set; }
+        public int AwayScoreDisplay { get; set; }
     }
     public partial class Form1 : Form
     {
@@ -32,7 +34,10 @@ namespace MyFootballManagerForms
             var dataArr = mm.Select(it => new DisplayMatch()
             {
                 Id = it.ID,
-                HomeTeamDisplay = it.HomeTeam.Name
+                HomeTeamDisplay = it.HomeTeam.Name,
+                AwayTeamDisplay = it.AwayTeam.Name,
+                HomeScoreDisplay = it.Result.HomeScore,
+                AwayScoreDisplay = it.Result.AwayScore
             }).ToArray();
 
             dgMatches.DataSource = dataArr;
