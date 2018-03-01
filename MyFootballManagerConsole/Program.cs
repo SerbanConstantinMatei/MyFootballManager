@@ -13,7 +13,8 @@ namespace MyFootballManagerConsole
         {
             var mm = new MatchListFromMemory();
             mm.LoadData();
-            Console.WriteLine($"nr matches{mm.Count}");
+            mm.SortByPoints();
+            Console.WriteLine(mm.Count);
             for (int i = 0; i < mm.Count; i++)
             {
                 Console.WriteLine(" ");
@@ -28,9 +29,17 @@ namespace MyFootballManagerConsole
                 Console.Write(mm[i].Result.HomeScore);
                 Console.Write(" ");
                 Console.Write(mm[i].Result.AwayScore);
-
+                Console.Write(" ");
             }
 
+            Console.WriteLine(" ");
+
+            for (int i = 1; i <= mm.teams.Count; i++)
+            {
+                Console.WriteLine(" ");
+                Console.Write(i + ". " + mm.teams[i - 1].Name + " " + mm.teams[i - 1].GoalsScored);
+            }
+            Console.WriteLine(" ");
         }
     }
 }
