@@ -12,6 +12,7 @@ namespace MyFootballManagerConsole
         static void Main(string[] args)
         {
             var mm = new MatchListFromMemory();
+            var csvm = new MatchListFromCSV();
             mm.LoadData();
             mm.SortByPoints();
             Console.WriteLine(mm.Count);
@@ -32,14 +33,25 @@ namespace MyFootballManagerConsole
                 Console.Write(" ");
             }
 
-            Console.WriteLine(" ");
+            Console.WriteLine();
+            Console.Write("Clasament:");
 
             for (int i = 1; i <= mm.teams.Count; i++)
             {
                 Console.WriteLine(" ");
                 Console.Write(i + ". " + mm.teams[i - 1].Name + " " + mm.teams[i - 1].GoalsScored);
             }
-            Console.WriteLine(" ");
+            Console.WriteLine();
+            Console.WriteLine();
+
+            csvm.LoadData();
+            for (int i = 0; i < csvm.Count; i++)
+            {
+                Console.Write(csvm[i].ID + " " + csvm[i].Date + " " + csvm[i].HomeTeam.Name + " ");
+                Console.Write(csvm[i].AwayTeam.Name + " " + csvm[i].Result.HomeScore + " ");
+                Console.Write(csvm[i].Result.AwayScore);
+                Console.WriteLine();
+            }
         }
     }
 }
