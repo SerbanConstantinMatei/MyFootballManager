@@ -1,0 +1,7 @@
+6
+1,01,01,2017,Steaua,Dinamo,2,2
+2,02,01,2017,Steaua,Rapid,5,1
+3,05,01,2017,Dinamo,Rapid,3,0
+4,06,01,2017,Dinamo,Steaua,1,0
+5,10,01,2017,Rapid,Steaua,0,2
+6,11,01,2017,Rapid,Dinamo,1,0
