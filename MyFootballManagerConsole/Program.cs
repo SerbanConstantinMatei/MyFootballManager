@@ -34,12 +34,13 @@ namespace MyFootballManagerConsole
             }
 
             Console.WriteLine();
-            Console.Write("Clasament:");
+            Console.Write("Leaderboard:");
 
             for (int i = 1; i <= mm.teams.Count; i++)
             {
                 Console.WriteLine(" ");
-                Console.Write(i + ". " + mm.teams[i - 1].Name + " " + mm.teams[i - 1].GoalsScored);
+                Console.Write(i + ". " + mm.teams[i - 1].Name + " " + mm.teams[i - 1].ChampionshipPoints);
+                Console.Write("pts " + mm.teams[i - 1].GoalsScored + " goals");
             }
             Console.WriteLine();
             Console.WriteLine();
