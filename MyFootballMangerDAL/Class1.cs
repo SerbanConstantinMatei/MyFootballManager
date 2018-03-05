@@ -55,7 +55,7 @@ namespace MyFootballMangerDAL
                 }
             }
         }
-
+        //TODO: Andrei make linq to sort
         public void SortByPoints()
         {
             /* Basic Bubble Sort */
