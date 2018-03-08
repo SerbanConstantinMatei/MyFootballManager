@@ -17,6 +17,8 @@ namespace MyFootballMangerDAL
             string path = "..\\..\\..\\Data\\Data.txt";
             using (var reader = new StreamReader(path))
             {
+
+                //IValidatableObject pentru rinduri ncorecte
                 int n;
                 int.TryParse(reader.ReadLine(), out n);
                 for (int i = 0; i < n; i++)
