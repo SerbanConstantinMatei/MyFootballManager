@@ -1,2 +1,4 @@
 Leaderboard 2017
-ggg
+
+
+Se va calcula dinamic la adaugarea unui match

@@ -58,7 +58,7 @@ namespace MyFootballMangerDAL
 
                     m.HomeTeam.GoalsScored += m.Result.HomeScore;
                     m.AwayTeam.GoalsScored += m.Result.AwayScore;
-
+                    //EA, IBM, Microsoft, 
                     if (m.Result.HomeScore > m.Result.AwayScore)
                     {
                         m.HomeTeam.ChampionshipPoints += 3;

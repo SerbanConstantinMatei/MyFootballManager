@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyFootballManagerObjects;
 using MyFootballMangerDAL;
 
 namespace MyFootballManagerConsole
@@ -46,6 +47,15 @@ namespace MyFootballManagerConsole
             Console.WriteLine();
 
             csvm.LoadData();
+            //csvm.Add(new Match()
+            //{
+            //    Result = new Score()
+            //    {
+            //        AwayScore = 2,
+            //        HomeScore = 3
+            //    }
+            //});
+
             for (int i = 0; i < csvm.Count; i++)
             {
                 Console.Write(csvm[i].ID + " " + csvm[i].Date + " " + csvm[i].HomeTeam.Name + " ");
