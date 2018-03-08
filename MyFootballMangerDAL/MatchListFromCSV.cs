@@ -24,6 +24,7 @@ namespace MyFootballMangerDAL
 
                 //IValidatableObject pentru rinduri ncorecte
                 //nu se pune n inainte
+                //se citeste pana la final
                 int n;
                 int.TryParse(reader.ReadLine(), out n);
                 for (int i = 0; i < n; i++)
