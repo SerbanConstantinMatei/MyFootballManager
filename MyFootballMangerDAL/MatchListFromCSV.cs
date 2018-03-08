@@ -14,11 +14,16 @@ namespace MyFootballMangerDAL
         public List<Team> teams = new List<Team>();
         public void LoadData()
         {
+            //add as property
+            // identify if file is on hard or on internet
+            //ce se intmpla daca iti da fisierul ca
+            //https://raw.githubusercontent.com/SerbanConstantinMatei/MyFootballManager/master/Data/Data.txt
             string path = "..\\..\\..\\Data\\Data.txt";
             using (var reader = new StreamReader(path))
             {
 
                 //IValidatableObject pentru rinduri ncorecte
+                //nu se pune n inainte
                 int n;
                 int.TryParse(reader.ReadLine(), out n);
                 for (int i = 0; i < n; i++)
@@ -30,7 +35,8 @@ namespace MyFootballMangerDAL
                     int id;
                     int.TryParse(values[0], out id);
                     m.ID = id;
-
+                    //tratare erori sau ivalidatable
+                    //mostenest din exception
                     int year, month, day;
                     int.TryParse(values[1], out day);
                     int.TryParse(values[2], out month);
