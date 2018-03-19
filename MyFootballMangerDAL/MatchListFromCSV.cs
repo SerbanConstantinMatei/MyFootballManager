@@ -23,8 +23,6 @@ namespace MyFootballMangerDAL
             using (var reader = new StreamReader(path))
             {
                 //TODO: IValidatableObject pentru randuri incorecte
-                int n;
-                int.TryParse(reader.ReadLine(), out n);
                 while (!reader.EndOfStream) 
                 {
                     var line = reader.ReadLine();
