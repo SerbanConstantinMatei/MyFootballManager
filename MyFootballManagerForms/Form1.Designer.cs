@@ -36,6 +36,7 @@
             this.homeTeamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.awayTeamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnLeaderboard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgMatches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchListBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -45,8 +46,6 @@
             this.dgMatches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgMatches.AutoGenerateColumns = true;
-           
             this.dgMatches.Location = new System.Drawing.Point(12, 34);
             this.dgMatches.Name = "dgMatches";
             this.dgMatches.Size = new System.Drawing.Size(591, 150);
@@ -86,11 +85,22 @@
             this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
             this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
             // 
+            // BtnLeaderboard
+            // 
+            this.BtnLeaderboard.Location = new System.Drawing.Point(84, 213);
+            this.BtnLeaderboard.Name = "BtnLeaderboard";
+            this.BtnLeaderboard.Size = new System.Drawing.Size(75, 23);
+            this.BtnLeaderboard.TabIndex = 1;
+            this.BtnLeaderboard.Text = "Leaderboard";
+            this.BtnLeaderboard.UseVisualStyleBackColor = true;
+            this.BtnLeaderboard.Click += new System.EventHandler(this.BtnLeaderboard_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 261);
+            this.Controls.Add(this.BtnLeaderboard);
             this.Controls.Add(this.dgMatches);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -110,6 +120,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn awayTeamDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource matchListBindingSource;
+        private System.Windows.Forms.Button BtnLeaderboard;
     }
 }
 

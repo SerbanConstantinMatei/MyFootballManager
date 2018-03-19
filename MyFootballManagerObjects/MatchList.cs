@@ -7,10 +7,22 @@ namespace MyFootballManagerObjects
         public new void Add(Match m)
         {
             base.Add(m);
-            //TODO: update leader board
-            //TODO: protected, internal, publc, private?
-            //System.Console.WriteLine("add");
-            //TODO: calculate leaderboard not on real time, but on demand
+            m.HomeTeam.GoalsScored += m.Result.HomeScore;
+            m.AwayTeam.GoalsScored += m.Result.AwayScore;
+
+            if (m.Result.HomeScore > m.Result.AwayScore)
+            {
+                m.HomeTeam.ChampionshipPoints += 3;
+            }
+            else if (m.Result.HomeScore < m.Result.AwayScore)
+            {
+                m.AwayTeam.ChampionshipPoints += 3;
+            }
+            else
+            {
+                m.AwayTeam.ChampionshipPoints++;
+                m.HomeTeam.ChampionshipPoints++;
+            }
         }
     }
 }

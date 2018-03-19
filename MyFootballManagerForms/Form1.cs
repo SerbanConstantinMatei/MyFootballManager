@@ -11,8 +11,10 @@ using MyFootballMangerDAL;
 
 namespace MyFootballManagerForms
 {
+
     public partial class Form1 : Form
     {
+        MatchListFromMemory mm;
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +35,16 @@ namespace MyFootballManagerForms
             }).ToArray();
 
             dgMatches.DataSource = dataArr;
+        }
+
+        private void BtnLeaderboard_Click(object sender, EventArgs e)
+        {
+            LeaderboardForm LF = new LeaderboardForm();
+            //TODO How to show this form on click?
+            mm.LoadData();
+            mm.SortByPoints();
+            //missing something...?
+            LF.ShowDialog(this);
         }
     }
 }

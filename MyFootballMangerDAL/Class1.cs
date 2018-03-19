@@ -35,27 +35,12 @@ namespace MyFootballMangerDAL
                     m.Result = new Score();
                     m.Result.HomeScore = new Random(i).Next(6);
                     m.Result.AwayScore = new Random(j).Next(5);
-                    m.HomeTeam.GoalsScored += m.Result.HomeScore;
-                    m.AwayTeam.GoalsScored += m.Result.AwayScore;
-
-                    if (m.Result.HomeScore > m.Result.AwayScore)
-                    {
-                        m.HomeTeam.ChampionshipPoints += 3;
-                    }
-                    else if (m.Result.HomeScore < m.Result.AwayScore)
-                    {
-                        m.AwayTeam.ChampionshipPoints += 3;
-                    }
-                    else
-                    {
-                        m.AwayTeam.ChampionshipPoints++;
-                        m.HomeTeam.ChampionshipPoints++;
-                    }
                     this.Add(m);
                 }
             }
         }
         //TODO: Andrei make linq to sort
+        // Cum ar fi static?
         public void SortByPoints()
         {
             /* Basic Bubble Sort */

@@ -11,23 +11,21 @@ namespace MyFootballMangerDAL
 {
     public class MatchListFromCSV:MatchList
     {
+        public string path { get; set; }
         public List<Team> teams = new List<Team>();
         public void LoadData()
         {
-            //add as property
-            // identify if file is on hard or on internet
+            //TODO: identify if file is on hard or on internet
             //ce se intmpla daca iti da fisierul ca
             //https://raw.githubusercontent.com/SerbanConstantinMatei/MyFootballManager/master/Data/Data.txt
-            string path = "..\\..\\..\\Data\\Data.txt";
+            
+            
             using (var reader = new StreamReader(path))
             {
-
-                //IValidatableObject pentru rinduri ncorecte
-                //nu se pune n inainte
-                //se citeste pana la final
+                //TODO: IValidatableObject pentru randuri incorecte
                 int n;
                 int.TryParse(reader.ReadLine(), out n);
-                for (int i = 0; i < n; i++)
+                while (!reader.EndOfStream) 
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
@@ -56,22 +54,6 @@ namespace MyFootballMangerDAL
                     int.TryParse(values[7], out score);
                     m.Result.AwayScore = score;
 
-                    m.HomeTeam.GoalsScored += m.Result.HomeScore;
-                    m.AwayTeam.GoalsScored += m.Result.AwayScore;
-                    //EA, IBM, Microsoft, 
-                    if (m.Result.HomeScore > m.Result.AwayScore)
-                    {
-                        m.HomeTeam.ChampionshipPoints += 3;
-                    }
-                    else if (m.Result.HomeScore < m.Result.AwayScore)
-                    {
-                        m.AwayTeam.ChampionshipPoints += 3;
-                    }
-                    else
-                    {
-                        m.AwayTeam.ChampionshipPoints++;
-                        m.HomeTeam.ChampionshipPoints++;
-                    }
                     this.Add(m);
                 }
             }
