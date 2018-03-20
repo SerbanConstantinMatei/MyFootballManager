@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using MyFootballManagerObjects;
@@ -10,6 +12,21 @@ namespace MyFootballManagerConsole
 {
     class Program
     {
+        private static string pathToCSV = "..\\..\\..\\Data\\Data.txt";
+
+        public static int ReadMyInt()
+        {
+            string data = Console.ReadLine();
+            int MyInt;
+            while (!int.TryParse(data, out MyInt))
+            {
+                Console.WriteLine("Invalid input!");
+                data = Console.ReadLine();
+            }
+
+            return MyInt;
+        }
+
         static void Main(string[] args)
         {
             var mm = new MatchListFromMemory();
@@ -46,8 +63,40 @@ namespace MyFootballManagerConsole
             Console.WriteLine();
             Console.WriteLine();
 
-            csvm.path = "..\\..\\..\\Data\\Data.txt";
-            csvm.LoadData();
+            Console.WriteLine("Is the file on hard or internet?");
+            Console.WriteLine("Write 0 if on hard, 1 if on internet");
+            int input = ReadMyInt();
+            while ((input != 1) && (input != 0))
+            {
+                Console.WriteLine("Invalid input: write 0 if on hard, 1 if on internet");
+                input = ReadMyInt();
+            }
+
+            if (input == 1)
+            {
+                Console.WriteLine("Write the url:");
+                string stringUrl = Console.ReadLine();
+                Uri uri = new Uri(stringUrl);
+                WebClient webClient = new WebClient();
+                try
+                {
+                    webClient.DownloadFile(uri, pathToCSV);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error encountered while trying to download the file");
+                }
+            }
+
+            csvm.path = pathToCSV;
+            try
+            {
+                csvm.LoadData();
+            }
+            catch (InvalidDataException e)
+            {
+                Console.WriteLine(e.Message);
+            }
            
             for (int i = 0; i < csvm.Count; i++)
             {
