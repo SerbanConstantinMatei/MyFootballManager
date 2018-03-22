@@ -9,7 +9,7 @@ namespace MyFootballMangerDAL
 {
     public class MatchListFromMemory:MatchList
     {
-        public List<Team> teams = new List<Team>();
+        
         public void LoadData()
         {
             for (int i = 0; i < 3; i++)
@@ -39,39 +39,15 @@ namespace MyFootballMangerDAL
                 }
             }
         }
+
+        public Team[] Winners ()
+        {
+            var maxim = this.teams.Max((x) => x.ChampionshipPoints);
+            var result = this.teams.Where((x) => x.ChampionshipPoints == maxim);
+            return result.ToArray();
+
+        }
         //TODO: Andrei make linq to sort
         // Cum ar fi static?
-        public void SortByPoints()
-        {
-            /* Basic Bubble Sort */
-            int l = teams.Count;
-            bool sorted;
-
-            do
-            {
-                sorted = true;
-                for (int i = 0; i < l - 1; i++)
-                {
-                    if (teams[i].ChampionshipPoints < teams[i + 1].ChampionshipPoints)
-                    {
-                        Team aux = teams[i];
-                        teams[i] = teams[i + 1];
-                        teams[i + 1] = aux;
-                        sorted = false;
-                    }
-
-                    else if (teams[i].ChampionshipPoints == teams[i + 1].ChampionshipPoints)
-                    {
-                        if (teams[i].GoalsScored < teams[i + 1].GoalsScored)
-                        {
-                            Team aux = teams[i];
-                            teams[i] = teams[i + 1];
-                            teams[i + 1] = aux;
-                            sorted = false;
-                        }
-                    }
-                }
-            } while (!sorted);
-        }
     }
 }

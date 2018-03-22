@@ -14,7 +14,7 @@ namespace MyFootballManagerForms
 
     public partial class Form1 : Form
     {
-        MatchListFromMemory mm;
+        MatchListFromMemory mm;// = new MatchListFromMemory();
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace MyFootballManagerForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var mm = new MatchListFromMemory();
+            mm = new MatchListFromMemory();
             mm.LoadData();
 
             var dataArr = mm.Select(it => new DisplayMatch()
@@ -40,11 +40,30 @@ namespace MyFootballManagerForms
         private void BtnLeaderboard_Click(object sender, EventArgs e)
         {
             LeaderboardForm LF = new LeaderboardForm();
+            LF.Llist = mm;
             //TODO How to show this form on click?
-            mm.LoadData();
-            mm.SortByPoints();
+            //mm.LoadData();
+           // mm.SortByPoints();
             //missing something...?
             LF.ShowDialog(this);
+        }
+
+        private void btnWinner_Click(object sender, EventArgs e)
+        {
+
+            //TODO: homework ; see losers
+            //MessageBox.Show(mm.Winners().ToString());
+            var winnerList = mm.Winners();
+            var list = winnerList.ToList();
+            list.Sort((x, y) => x.Name.CompareTo(y.Name));
+            winnerList = list.ToArray();
+            string winner = "";
+            for (int i = 0; i < winnerList.Length; i++)
+            {
+                winner += winnerList[i].Name + ' ' + winnerList[i].ChampionshipPoints + Environment.NewLine;
+            }
+
+            MessageBox.Show(winner);
         }
     }
 }

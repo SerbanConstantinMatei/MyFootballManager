@@ -30,13 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgMatches = new System.Windows.Forms.DataGridView();
-            this.matchListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.homeTeamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.awayTeamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnLeaderboard = new System.Windows.Forms.Button();
+            this.btnWinner = new System.Windows.Forms.Button();
+            this.matchListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgMatches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchListBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -50,10 +52,6 @@
             this.dgMatches.Name = "dgMatches";
             this.dgMatches.Size = new System.Drawing.Size(591, 150);
             this.dgMatches.TabIndex = 0;
-            // 
-            // matchListBindingSource
-            // 
-            this.matchListBindingSource.DataSource = typeof(MyFootballManagerObjects.MatchList);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -95,11 +93,26 @@
             this.BtnLeaderboard.UseVisualStyleBackColor = true;
             this.BtnLeaderboard.Click += new System.EventHandler(this.BtnLeaderboard_Click);
             // 
+            // btnWinner
+            // 
+            this.btnWinner.Location = new System.Drawing.Point(268, 213);
+            this.btnWinner.Name = "btnWinner";
+            this.btnWinner.Size = new System.Drawing.Size(75, 23);
+            this.btnWinner.TabIndex = 2;
+            this.btnWinner.Text = "Winner";
+            this.btnWinner.UseVisualStyleBackColor = true;
+            this.btnWinner.Click += new System.EventHandler(this.btnWinner_Click);
+            // 
+            // matchListBindingSource
+            // 
+            this.matchListBindingSource.DataSource = typeof(MyFootballManagerObjects.MatchList);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 261);
+            this.Controls.Add(this.btnWinner);
             this.Controls.Add(this.BtnLeaderboard);
             this.Controls.Add(this.dgMatches);
             this.Name = "Form1";
@@ -121,6 +134,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource matchListBindingSource;
         private System.Windows.Forms.Button BtnLeaderboard;
+        private System.Windows.Forms.Button btnWinner;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

@@ -12,4 +12,11 @@ namespace MyFootballManagerObjects
         public int ChampionshipPoints { get; set; }
         public int GoalsScored { get; set; }
     }
+    public class CompareTeamByPoints : IComparer<Team>
+    {
+        public int Compare(Team x, Team y)
+        {
+            return x.ChampionshipPoints.CompareTo(y.ChampionshipPoints);
+        }
+    }
 }

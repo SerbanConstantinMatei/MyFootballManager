@@ -78,6 +78,10 @@ namespace MyFootballManagerConsole
                 string stringUrl = Console.ReadLine();
                 Uri uri = new Uri(stringUrl);
                 WebClient webClient = new WebClient();
+                //TODO: https://www.scorespro.com/rss2/live-soccer.xml
+                //webClient.DownloadString
+                //SyndicationFeed feed 
+                //TODO: read scores and display in program and in form
                 try
                 {
                     webClient.DownloadFile(uri, pathToCSV);
