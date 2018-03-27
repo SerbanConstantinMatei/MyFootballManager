@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,8 @@ namespace MyFootballManagerForms
 
     public partial class Form1 : Form
     {
-        MatchListFromMemory mm;
+        MatchListFromXML mm;
+        private string path = "..\\..\\..\\Data\\Data.txt";
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +24,21 @@ namespace MyFootballManagerForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            mm = new MatchListFromMemory();
+            //mm = new MatchListFromMemory();
+            mm = new MatchListFromXML();
+            string url = "https://www.scorespro.com/rss2/live-soccer.xml";
+            mm.path = path;
+            Uri uri = new Uri(url);
+            WebClient webClient = new WebClient();
+            try
+            {
+                webClient.DownloadFile(uri, mm.path);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error");
+            }
+
             mm.LoadData();
 
             var dataArr = mm.Select(it => new DisplayMatch()

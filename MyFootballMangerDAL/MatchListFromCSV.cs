@@ -12,7 +12,7 @@ namespace MyFootballMangerDAL
     public class MatchListFromCSV: MatchList
     {
         public string path { get; set; }
-        public List<Team> teams = new List<Team>();
+        //public List<Team> teams = new List<Team>();
         public void LoadData()
         {
             //ce se intmpla daca iti da fisierul ca

@@ -12,7 +12,9 @@ namespace MyFootballManagerConsole
 {
     class Program
     {
-        private static string pathToCSV = "..\\..\\..\\Data\\Data.txt";
+        private static string pathToXML = "..\\..\\..\\Data\\Data.txt";
+        private static string pathToCSV = "..\\..\\..\\Data\\Data2.txt";
+        //pathToCSV overwritten :(
 
         public static int ReadMyInt()
         {
@@ -64,14 +66,14 @@ namespace MyFootballManagerConsole
                 WebClient webClient = new WebClient();
                 //https://www.scorespro.com/rss2/live-soccer.xml
                 //TODO: read scores and display in program and in form
-               
+
                 //http://www.tutorialspoint.com/design_pattern/iterator_pattern.htm
                 //https://en.wikipedia.org/wiki/Singleton_pattern
 
                 try
                 {
                     //pathToCSV = webClient.DownloadString(uri);
-                    webClient.DownloadFile(uri, pathToCSV);
+                    webClient.DownloadFile(uri, pathToXML);
                 }
                 catch (Exception e)
                 {
