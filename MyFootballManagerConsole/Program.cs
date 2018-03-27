@@ -31,37 +31,8 @@ namespace MyFootballManagerConsole
         {
             var mm = new MatchListFromMemory();
             var csvm = new MatchListFromCSV();
-            mm.LoadData();
-            mm.SortByPoints();
-            Console.WriteLine(mm.Count);
-            for (int i = 0; i < mm.Count; i++)
-            {
-                Console.WriteLine(" ");
-                Console.Write(mm[i].ID);
-                Console.Write(" ");
-                Console.Write(mm[i].Date);
-                Console.Write(" ");
-                Console.Write(mm[i].HomeTeam.Name);
-                Console.Write(" ");
-                Console.Write(mm[i].AwayTeam.Name);
-                Console.Write(" ");
-                Console.Write(mm[i].Result.HomeScore);
-                Console.Write(" ");
-                Console.Write(mm[i].Result.AwayScore);
-                Console.Write(" ");
-            }
-
-            Console.WriteLine();
-            Console.Write("Leaderboard:");
-
-            for (int i = 1; i <= mm.teams.Count; i++)
-            {
-                Console.WriteLine(" ");
-                Console.Write(i + ". " + mm.teams[i - 1].Name + " " + mm.teams[i - 1].ChampionshipPoints);
-                Console.Write("pts " + mm.teams[i - 1].GoalsScored + " goals");
-            }
-            Console.WriteLine();
-            Console.WriteLine();
+            string fileType = null;
+            bool xml = false;
 
             Console.WriteLine("Is the file on hard or internet?");
             Console.WriteLine("Write 0 if on hard, 1 if on internet");
@@ -76,17 +47,30 @@ namespace MyFootballManagerConsole
             {
                 Console.WriteLine("Write the url:");
                 string stringUrl = Console.ReadLine();
+                int i = stringUrl.Length - 2;
+                for (; i >= 0; i--)
+                {
+                    if (stringUrl[i] == '.')
+                    {
+                        fileType = stringUrl.Substring(i+1);
+                        break;
+                    }
+                }
+                if (fileType.Equals("xml"))
+                {
+                    xml = true;
+                }
                 Uri uri = new Uri(stringUrl);
                 WebClient webClient = new WebClient();
-                //TODO: https://www.scorespro.com/rss2/live-soccer.xml
-                //webClient.DownloadString
-                //SyndicationFeed feed 
+                //https://www.scorespro.com/rss2/live-soccer.xml
                 //TODO: read scores and display in program and in form
                
-                //todo: http://www.tutorialspoint.com/design_pattern/iterator_pattern.htm
-                //tODO:https://en.wikipedia.org/wiki/Singleton_pattern
+                //http://www.tutorialspoint.com/design_pattern/iterator_pattern.htm
+                //https://en.wikipedia.org/wiki/Singleton_pattern
+
                 try
                 {
+                    //pathToCSV = webClient.DownloadString(uri);
                     webClient.DownloadFile(uri, pathToCSV);
                 }
                 catch (Exception e)
@@ -95,6 +79,14 @@ namespace MyFootballManagerConsole
                 }
             }
 
+            if (xml)
+            {
+                MatchListFromXML mx = new MatchListFromXML();
+                mx.path = pathToCSV;
+                mx.LoadData();
+                //TODO: leaderboard
+                return;
+            }
             csvm.path = pathToCSV;
             try
             {

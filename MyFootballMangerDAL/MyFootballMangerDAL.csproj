@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="MatchListFromMemory.cs" />
+    <Compile Include="MatchListFromXML.cs" />
     <Compile Include="MatchListFromCSV.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
