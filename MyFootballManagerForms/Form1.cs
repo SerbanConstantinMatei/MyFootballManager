@@ -14,7 +14,7 @@ namespace MyFootballManagerForms
 
     public partial class Form1 : Form
     {
-        MatchListFromMemory mm;// = new MatchListFromMemory();
+        MatchListFromMemory mm;
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +33,6 @@ namespace MyFootballManagerForms
                 HomeScoreDisplay = it.Result.HomeScore,
                 AwayScoreDisplay = it.Result.AwayScore
             }).ToArray();
-
             dgMatches.DataSource = dataArr;
         }
 
@@ -41,18 +40,12 @@ namespace MyFootballManagerForms
         {
             LeaderboardForm LF = new LeaderboardForm();
             LF.Llist = mm;
-            //TODO How to show this form on click?
-            //mm.LoadData();
-           // mm.SortByPoints();
-            //missing something...?
+            
             LF.ShowDialog(this);
         }
 
         private void btnWinner_Click(object sender, EventArgs e)
         {
-
-            //TODO: homework ; see losers
-            //MessageBox.Show(mm.Winners().ToString());
             var winnerList = mm.Winners();
             var list = winnerList.ToList();
             list.Sort((x, y) => x.Name.CompareTo(y.Name));
@@ -64,6 +57,20 @@ namespace MyFootballManagerForms
             }
 
             MessageBox.Show(winner);
+        }
+
+        private void Loser_Click(object sender, EventArgs e)
+        {
+            var loserList = mm.Losers();
+            var list = loserList.ToList();
+            list.Sort((x, y) => x.Name.CompareTo(y.Name));
+            loserList = list.ToArray();
+            string loser = "";
+            for (int i = 0; i < loserList.Length; i++)
+            {
+                loser += loserList[i].Name + ' ' + loserList[i].ChampionshipPoints + Environment.NewLine;
+            }
+            MessageBox.Show(loser);
         }
     }
 }

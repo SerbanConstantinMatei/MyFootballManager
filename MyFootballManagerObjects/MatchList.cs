@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace MyFootballManagerObjects
 {
@@ -17,7 +18,7 @@ namespace MyFootballManagerObjects
                 (x, y)
                 =>
 
-                    x.ChampionshipPoints.CompareTo(y.ChampionshipPoints)
+                    y.ChampionshipPoints.CompareTo(x.ChampionshipPoints)
 
                 );
             ///* Basic Bubble Sort */
@@ -51,6 +52,21 @@ namespace MyFootballManagerObjects
             //} while (!sorted);
         }
 
+        public Team[] Winners()
+        {
+            var maxim = this.teams.Max((x) => x.ChampionshipPoints);
+            var result = this.teams.Where((x) => x.ChampionshipPoints == maxim);
+            return result.ToArray();
+
+        }
+
+        public Team[] Losers()
+        {
+            var minim = this.teams.Min((x) => x.ChampionshipPoints);
+            var result = this.teams.Where((x) => x.ChampionshipPoints == minim);
+            return result.ToArray();
+        }
+
         public new void Add(Match m)
         {
             base.Add(m);
@@ -69,7 +85,8 @@ namespace MyFootballManagerObjects
             {
                 m.AwayTeam.ChampionshipPoints++;
                 m.HomeTeam.ChampionshipPoints++;
-            }
+            } //todo: Read fluent builder and add match to machlist (make a function), strategy
+                //email amazon
         }
     }
 }

@@ -82,6 +82,9 @@ namespace MyFootballManagerConsole
                 //webClient.DownloadString
                 //SyndicationFeed feed 
                 //TODO: read scores and display in program and in form
+               
+                //todo: http://www.tutorialspoint.com/design_pattern/iterator_pattern.htm
+                //tODO:https://en.wikipedia.org/wiki/Singleton_pattern
                 try
                 {
                     webClient.DownloadFile(uri, pathToCSV);

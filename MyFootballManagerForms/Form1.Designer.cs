@@ -39,6 +39,7 @@
             this.btnWinner = new System.Windows.Forms.Button();
             this.matchListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.Loser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgMatches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchListBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
             this.dgMatches.Name = "dgMatches";
             this.dgMatches.Size = new System.Drawing.Size(591, 150);
             this.dgMatches.TabIndex = 0;
+            //this.dgMatches.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMatches_CellContentClick);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -107,11 +109,22 @@
             // 
             this.matchListBindingSource.DataSource = typeof(MyFootballManagerObjects.MatchList);
             // 
+            // Loser
+            // 
+            this.Loser.Location = new System.Drawing.Point(490, 213);
+            this.Loser.Name = "Loser";
+            this.Loser.Size = new System.Drawing.Size(75, 23);
+            this.Loser.TabIndex = 3;
+            this.Loser.Text = "Loser";
+            this.Loser.UseVisualStyleBackColor = true;
+            this.Loser.Click += new System.EventHandler(this.Loser_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 261);
+            this.Controls.Add(this.Loser);
             this.Controls.Add(this.btnWinner);
             this.Controls.Add(this.BtnLeaderboard);
             this.Controls.Add(this.dgMatches);
@@ -136,6 +149,7 @@
         private System.Windows.Forms.Button BtnLeaderboard;
         private System.Windows.Forms.Button btnWinner;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button Loser;
     }
 }
 

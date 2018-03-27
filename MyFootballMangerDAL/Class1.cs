@@ -40,14 +40,6 @@ namespace MyFootballMangerDAL
             }
         }
 
-        public Team[] Winners ()
-        {
-            var maxim = this.teams.Max((x) => x.ChampionshipPoints);
-            var result = this.teams.Where((x) => x.ChampionshipPoints == maxim);
-            return result.ToArray();
-
-        }
-        //TODO: Andrei make linq to sort
-        // Cum ar fi static?
-    }
+    
+     }
 }

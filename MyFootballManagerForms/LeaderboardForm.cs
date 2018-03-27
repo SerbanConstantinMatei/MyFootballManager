@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MyFootballManagerObjects;
+using MyFootballMangerDAL;
 
 namespace MyFootballManagerForms
 {
@@ -22,7 +23,13 @@ namespace MyFootballManagerForms
         private void LeaderboardForm_Load(object sender, EventArgs e)
         {
             Llist.SortByPoints();
-            matchListBindingSource.DataSource = Llist;
+            var dataArr = Llist.teams.Select(it => new DisplayLeaderboard()
+            {
+                Name = it.Name,
+                Points = it.ChampionshipPoints,
+                Goals = it.GoalsScored
+            }).ToArray();
+            dataGridView1.DataSource = dataArr;
         }
     }
 }
