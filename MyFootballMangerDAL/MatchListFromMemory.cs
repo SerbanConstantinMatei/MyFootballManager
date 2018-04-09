@@ -39,7 +39,5 @@ namespace MyFootballMangerDAL
                 }
             }
         }
-
-    
      }
 }

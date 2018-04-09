@@ -24,7 +24,6 @@ namespace MyFootballManagerForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //mm = new MatchListFromMemory();
             mm = new MatchListFromXML();
             string url = "https://www.scorespro.com/rss2/live-soccer.xml";
             mm.path = path;

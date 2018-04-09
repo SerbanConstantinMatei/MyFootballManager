@@ -5,11 +5,13 @@ namespace MyFootballManagerObjects
 {
     public class MatchList:List<Match>
     {
+        public List<Team> teams = new List<Team>();
+
         public MatchList()
         {
 
         }
-        public List<Team> teams = new List<Team>();
+        
         public void SortByPoints()
         {
 
@@ -50,8 +52,7 @@ namespace MyFootballManagerObjects
             {
                 m.AwayTeam.ChampionshipPoints++;
                 m.HomeTeam.ChampionshipPoints++;
-            } //todo: Read fluent builder and add match to machlist (make a function), strategy
-                //email amazon
+            }  
         }
     }
 }

@@ -18,15 +18,10 @@ namespace MyFootballMangerDAL
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(path);
 
-            //TODO: Work in progress
             XmlNodeList info = xmlDoc.GetElementsByTagName("description");
             XmlNodeList infoDate = xmlDoc.GetElementsByTagName("pubDate");
             for (int i = 1; i < info.Count; i++)
             {
-                Console.WriteLine("info: " + info[i].InnerText);
-                Console.WriteLine("infoDate: " + infoDate[i].InnerText);
-                Console.WriteLine();
-
                 Match m = new Match();
                 m.ID = i;
 

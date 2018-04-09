@@ -12,9 +12,30 @@ namespace MyFootballManagerConsole
 {
     class Program
     {
-        private static string pathToXML = "..\\..\\..\\Data\\Data.txt";
-        private static string pathToCSV = "..\\..\\..\\Data\\Data2.txt";
+        private static string pathToXML = "..\\..\\..\\Data\\Data2.txt";
+        private static string pathToCSV = "..\\..\\..\\Data\\Data.txt";
         //pathToCSV overwritten :(
+
+        public static void ShowMatchList(MatchList mm)
+        {
+            for (int i = 0; i < mm.Count; i++)
+            {
+                Console.Write(mm[i].ID + " " + mm[i].Date + " " + mm[i].HomeTeam.Name + " ");
+                Console.Write(mm[i].AwayTeam.Name + " " + mm[i].Result.HomeScore + " ");
+                Console.Write(mm[i].Result.AwayScore);
+                Console.WriteLine();
+            }
+        }
+
+        public static void ShowLeaderboard (MatchList mm)
+        {
+            mm.SortByPoints();
+            for (int i = 0; i < mm.teams.Count; i++)
+            {
+                Console.Write(mm.teams[i].Name + " " + mm.teams[i].ChampionshipPoints);
+                Console.WriteLine(" " + mm.teams[i].GoalsScored);
+            } 
+        }
 
         public static int ReadMyInt()
         {
@@ -65,7 +86,6 @@ namespace MyFootballManagerConsole
                 Uri uri = new Uri(stringUrl);
                 WebClient webClient = new WebClient();
                 //https://www.scorespro.com/rss2/live-soccer.xml
-                //TODO: read scores and display in program and in form
 
                 //http://www.tutorialspoint.com/design_pattern/iterator_pattern.htm
                 //https://en.wikipedia.org/wiki/Singleton_pattern
@@ -86,7 +106,8 @@ namespace MyFootballManagerConsole
                 MatchListFromXML mx = new MatchListFromXML();
                 mx.path = pathToCSV;
                 mx.LoadData();
-                //TODO: leaderboard
+                ShowMatchList(mx);
+                ShowLeaderboard(mx);
                 return;
             }
             csvm.path = pathToCSV;
@@ -98,14 +119,8 @@ namespace MyFootballManagerConsole
             {
                 Console.WriteLine(e.Message);
             }
-           
-            for (int i = 0; i < csvm.Count; i++)
-            {
-                Console.Write(csvm[i].ID + " " + csvm[i].Date + " " + csvm[i].HomeTeam.Name + " ");
-                Console.Write(csvm[i].AwayTeam.Name + " " + csvm[i].Result.HomeScore + " ");
-                Console.Write(csvm[i].Result.AwayScore);
-                Console.WriteLine();
-            }
+
+            ShowMatchList(csvm);
         }
     }
 }
