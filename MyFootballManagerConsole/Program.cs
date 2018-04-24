@@ -14,7 +14,6 @@ namespace MyFootballManagerConsole
     {
         private static string pathToXML = "..\\..\\..\\Data\\Data2.txt";
         private static string pathToCSV = "..\\..\\..\\Data\\Data.txt";
-        //pathToCSV overwritten :(
 
         public static void ShowMatchList(MatchList mm)
         {
@@ -52,6 +51,8 @@ namespace MyFootballManagerConsole
 
         static void Main(string[] args)
         {
+            //https://www.scorespro.com/rss2/live-soccer.xml
+
             var mm = new MatchListFromMemory();
             var csvm = new MatchListFromCSV();
             string fileType = null;
@@ -85,14 +86,9 @@ namespace MyFootballManagerConsole
                 }
                 Uri uri = new Uri(stringUrl);
                 WebClient webClient = new WebClient();
-                //https://www.scorespro.com/rss2/live-soccer.xml
-
-                //http://www.tutorialspoint.com/design_pattern/iterator_pattern.htm
-                //https://en.wikipedia.org/wiki/Singleton_pattern
 
                 try
                 {
-                    //pathToCSV = webClient.DownloadString(uri);
                     webClient.DownloadFile(uri, pathToXML);
                 }
                 catch (Exception e)
